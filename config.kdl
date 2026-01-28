@@ -164,6 +164,8 @@ layout {
         top 4
         bottom 4
     }
+
+    empty-workspace-above-first
 }
 
 // Add lines like this to spawn processes at startup.

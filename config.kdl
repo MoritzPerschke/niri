@@ -24,18 +24,13 @@ input {
         accel-speed 0.2
     }
 
+    touchpad {
+        natural-scroll
+    }
+
     // Uncomment this to make the mouse warp to the center of newly focused windows.
     // warp-mouse-to-focus
 }
-
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
-// => Modification: use seperate file for re-using config between Thinkpad and desktop
-include "local/screens.kdl"
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -430,8 +425,6 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
-// Include local overrides
-include "local/binds.kdl"
 
 hotkey-overlay {
     skip-at-startup
@@ -478,4 +471,4 @@ window-rule {
 spawn-at-startup "udiskie" "--smart-tray"
 spawn-at-startup "playerctld"
 
-include "local/noctalia.kdl"
+include "local.kdl"

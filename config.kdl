@@ -174,9 +174,8 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
-spawn-at-startup "waypaper" "--wallpaper" "~/.config/wezterm/backdrops/slate.png"
-spawn-at-startup "udiskie" "--smart-tray"
+// spawn-at-startup "waybar"
+// spawn-at-startup "waypaper" "--wallpaper" "~/.config/wezterm/backdrops/slate.png"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -322,6 +321,11 @@ binds {
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
+    // == change windowsize between 1/3, 1/2 and 2/3
+    Mod+1 { set-column-width "33.333%";}
+    Mod+2 { set-column-width "50%";}
+    Mod+3 { set-column-width "66.666%";}
+
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
     // ...
@@ -340,44 +344,11 @@ binds {
     // To avoid scrolling through workspaces really fast, you can use
     // the cooldown-ms property. The bind will be rate-limited to this value.
     // You can set a cooldown on any bind, but it's most useful for the wheel.
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-column-right; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-column-left; }
+    Mod+WheelScrollDown      cooldown-ms=50 { focus-column-right; }
+    Mod+WheelScrollUp        cooldown-ms=50 { focus-column-left; }
 
     Mod+Shift+WheelScrollDown { focus-workspace-down; }
     Mod+Shift+WheelScrollUp   { focus-workspace-up; }
-
-    // You can refer to workspaces by index. However, keep in mind that
-    // niri is a dynamic workspace system, so these commands are kind of
-    // "best effort". Trying to refer to a workspace index bigger than
-    // the current workspace count will instead refer to the bottommost
-    // (empty) workspace.
-    //
-    // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
-    // will all refer to the 3rd workspace.
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
-    Mod+Ctrl+1 { move-column-to-workspace 1; }
-    Mod+Ctrl+2 { move-column-to-workspace 2; }
-    Mod+Ctrl+3 { move-column-to-workspace 3; }
-    Mod+Ctrl+4 { move-column-to-workspace 4; }
-    Mod+Ctrl+5 { move-column-to-workspace 5; }
-    Mod+Ctrl+6 { move-column-to-workspace 6; }
-    Mod+Ctrl+7 { move-column-to-workspace 7; }
-    Mod+Ctrl+8 { move-column-to-workspace 8; }
-    Mod+Ctrl+9 { move-column-to-workspace 9; }
-
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Ctrl+1 { move-window-to-workspace 1; }
-
-    // Switches focus between the current and the previous workspace.
-    // Mod+Tab { focus-workspace-previous; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
@@ -414,11 +385,11 @@ binds {
     // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
     // set-column-width "100" will make the column occupy 200 physical screen pixels.
     Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
+    Mod+Plus { set-column-width "+10%"; }
 
     // Finer height adjustments when in column with other windows.
     Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+Plus { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
     Mod+V       { toggle-window-floating; }
@@ -483,16 +454,28 @@ window-rule {
     open-fullscreen true
 }
 
+window-rule {
+    match app-id="obsidian"
+    open-maximized true
+    opacity 0.9
+    background-effect {
+      blur true
+      xray true
+    }
+}
+
+window-rule {
+    match app-id="kitty|foot"
+    default-column-width { proportion 0.66667; }
+    opacity 0.8
+    background-effect {
+      blur true
+      xray true
+    }
+}
+
+
+spawn-at-startup "udiskie" "--smart-tray"
+spawn-at-startup "playerctld"
+
 include "local/noctalia.kdl"
-
-// window-rule {
-//     match app-id="firefox"
-//     respect-struts = true
-// }
-// window-rule {
-//     match app-id="kitty"
-//     match app-id=r#"^org\.wezfurlong\.wezterm$"#
-//     default-column-width { proportion 0.75; }
-// }
-
-spawn-at-startup "udiskie --smart-tray"

@@ -25,7 +25,14 @@ input {
     }
 
     touchpad {
+        tap
+        accel-speed 0.3
+        accel-profile "adaptive"
         natural-scroll
+        dwt
+        middle-emulation
+        scroll-factor 0.75
+        scroll-method "two-finger"
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
@@ -472,3 +479,6 @@ spawn-at-startup "udiskie" "--smart-tray"
 spawn-at-startup "playerctld"
 
 include "local.kdl"
+spawn-at-startup "noctalia"
+
+include "noctalia.kdl"

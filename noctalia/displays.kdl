@@ -1,0 +1,23 @@
+
+//output "DP-1" { // Acer Predator (left, vertical)
+//    transform "270"
+//    position x=0 y=0
+//}
+
+//output "DP-2" { // Main Asus
+//    position x=1080 y=480
+//    mode "2560x1440@144.006"
+//}
+
+//output "DP-3" { // Benq Top
+//    position x=1080 y=-600
+//}
+
+output "DP-1" { // Acer XB241H (left)
+    position x=0 y=0
+}
+
+output "DP-2" { // ASUS VG27AQ1A (right)
+    position x=1920 y=0
+    mode "2560x1440@144.006"
+}

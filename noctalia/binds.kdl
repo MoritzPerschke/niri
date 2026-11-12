@@ -1,0 +1,18 @@
+binds {
+    // == Noctalia Shell binds (v5)
+    Mod+D hotkey-overlay-title="Open Noctalia-shell Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+N hotkey-overlay-title="Noctalia-Shell: Open Notifications" { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
+    Mod+Shift+N hotkey-overlay-title="Noctalia-Shell: Clear Notifications" { spawn-sh "noctalia msg notification-clear-history"; }
+    Mod+Alt+W hotkey-overlay-title="Noctalia-Shell: Open Wallpaper picker" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
+    Mod+Semicolon hotkey-overlay-title="Noctalia-Shell: Lock Screen" { spawn-sh "noctalia msg session lock"; }
+    Mod+Control+V hotkey-overlay-title="Noctalia-Shell: Open Clipboard History" { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Mod+Shift+E hotkey-overlay-title="Noctalia-Shell: Toggle Powermenu" { spawn-sh "noctalia msg panel-toggle session"; }
+    Mod+P hotkey-overlay-title="Noctalia-Shell: Toggle notes" { spawn-sh "noctalia msg panel-toggle noctalia/notes:panel"; }
+    //Mod+Shift+C hotkey-overlay-title="Noctalia-Shell: Open Calculator" { spawn-sh "noctalia msg panel-toggle launcher \"=\""; }
+
+    //== Different Move keybinds
+    // Mod+J     { focus-window-or-monitor-down; }
+    // Mod+K     { focus-window-or-monitor-up; }
+    // Mod+Ctrl+J     { focus-window-or-workspace-down; }
+    // Mod+Ctrl+K     { focus-window-or-workspace-up; }
+}
